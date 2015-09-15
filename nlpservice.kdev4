@@ -1,0 +1,4 @@
+[Project]
+Name=nlpservice
+Manager=KDevCMakeManager
+VersionControl=kdevgit

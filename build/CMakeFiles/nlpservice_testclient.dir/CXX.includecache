@@ -1,0 +1,38 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/fei/projects/nlpservice/client.cpp
+iostream
+-
+thrift/protocol/TBinaryProtocol.h
+-
+thrift/transport/TSocket.h
+-
+thrift/transport/TTransportUtils.h
+-
+thrift/gen-cpp/NlpService.h
+/home/fei/projects/nlpservice/thrift/gen-cpp/NlpService.h
+
+/home/fei/projects/nlpservice/thrift/gen-cpp/NlpService.h
+thrift/TDispatchProcessor.h
+-
+nlpservice_types.h
+/home/fei/projects/nlpservice/thrift/gen-cpp/nlpservice_types.h
+
+/home/fei/projects/nlpservice/thrift/gen-cpp/nlpservice_types.h
+thrift/Thrift.h
+-
+thrift/TApplicationException.h
+-
+thrift/protocol/TProtocol.h
+-
+thrift/transport/TTransport.h
+-
+thrift/cxxfunctional.h
+-
+

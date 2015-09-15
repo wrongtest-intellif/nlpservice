@@ -1,0 +1,2 @@
+/home/fei/projects/nlpservice/build/CMakeFiles/nlpservice.dir
+/home/fei/projects/nlpservice/build/CMakeFiles/nlpservice_testclient.dir
