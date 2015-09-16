@@ -14,7 +14,7 @@ add_executable(nlpservice
 	thrift/gen-cpp/nlpservice_types.cpp
 	thrift/gen-cpp/nlpservice_constants.cpp
 )
-target_link_libraries(nlpservice thrift-0.9.1)
+target_link_libraries(nlpservice thrift)
 target_link_libraries(nlpservice NLPIR opencc)
 
 add_executable(nlpservice_testclient 
