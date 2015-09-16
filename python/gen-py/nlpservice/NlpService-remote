@@ -24,6 +24,8 @@ if len(sys.argv) <= 1 or sys.argv[1] == '--help':
   print ''
   print 'Functions:'
   print '  string wordcut_ictclas(IctclasWork work)'
+  print '  string fan2jian_opencc(string sentence)'
+  print '  string jian2fan_opencc(string sentence)'
   print ''
   sys.exit(0)
 
@@ -80,6 +82,18 @@ if cmd == 'wordcut_ictclas':
     print 'wordcut_ictclas requires 1 args'
     sys.exit(1)
   pp.pprint(client.wordcut_ictclas(eval(args[0]),))
+
+elif cmd == 'fan2jian_opencc':
+  if len(args) != 1:
+    print 'fan2jian_opencc requires 1 args'
+    sys.exit(1)
+  pp.pprint(client.fan2jian_opencc(args[0],))
+
+elif cmd == 'jian2fan_opencc':
+  if len(args) != 1:
+    print 'jian2fan_opencc requires 1 args'
+    sys.exit(1)
+  pp.pprint(client.jian2fan_opencc(args[0],))
 
 else:
   print 'Unrecognized method %s' % cmd

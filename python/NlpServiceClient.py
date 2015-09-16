@@ -10,25 +10,46 @@ from thrift.transport import TSocket
 from thrift.transport import TTransport
 from thrift.protocol import TBinaryProtocol
 
-try:
+class NlpServiceClient:
 
-  # Make socket
-  transport = TSocket.TSocket('localhost', 9090)
+    def __init__(self, host, port, posmap=PosMap.PKU1):    
+        try:
+            transport = TSocket.TSocket(host, port)
+            transport = TTransport.TBufferedTransport(transport)
+            protocol = TBinaryProtocol.TBinaryProtocol(transport)
+            
+            self.client = NlpService.Client(protocol)
+            self.posmap = posmap
+            transport.open()
+            
+        except Thrift.TException, tx:
+            print '%s' % (tx.message)
+            
+    def wordcut_ictclas(self, sentence):
+        work = IctclasWork(sentence, self.posmap)
+        return self.client.wordcut_ictclas(work);
+    
+    def fan2jian_opencc(self, sentence):
+        return self.client.fan2jian_opencc(sentence)
 
-  # Buffering is critical. Raw sockets are very slow
-  transport = TTransport.TBufferedTransport(transport)
+    def jian2fan_opencc(self, sentence):
+        return self.client.jian2fan_opencc(sentence)
+    
+    def close(self):
+        try:
+            transport.close()
+        except:
+            pass
+    
+    # with clause
+    def __enter__(self):
+        return self
+    def __exit__(self, exc_type, exc_value, traceback):
+        self.close()
 
-  # Wrap in a protocol
-  protocol = TBinaryProtocol.TBinaryProtocol(transport)
 
-  # Create a client to use the protocol encoder
-  client = NlpService.Client(protocol)
-
-  # Connect!
-  transport.open()
-  
-  work = IctclasWork("linux下有很多工具可以制作启动盘")
-  print client.wordcut_ictclas(work);
-
-except Thrift.TException, tx:
-  print '%s' % (tx.message)
+if __name__=="__main__":
+    with NlpServiceClient('localhost',9090) as client:
+        print client.wordcut_ictclas("linux下有很多工具可以制作启动盘")
+        print client.fan2jian_opencc("linux下有很多工具可以制作启动盘");
+        print client.jian2fan_opencc("linux下有很多工具可以制作启动盘");

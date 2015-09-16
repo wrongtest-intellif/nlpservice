@@ -9,12 +9,13 @@ link_directories(${PROJECT_EXTERNAL_RESOURCE_DIR}/ictclas/lib/linux64/) #ictclas
 add_executable(nlpservice 
 	server.cpp
 	NlpService.cpp
+	logging.cpp
 	thrift/gen-cpp/NlpService.cpp
 	thrift/gen-cpp/nlpservice_types.cpp
 	thrift/gen-cpp/nlpservice_constants.cpp
 )
-target_link_libraries(nlpservice NLPIR thrift-0.9.1)
-
+target_link_libraries(nlpservice thrift-0.9.1)
+target_link_libraries(nlpservice NLPIR opencc)
 
 add_executable(nlpservice_testclient 
 	client.cpp
@@ -24,4 +25,4 @@ add_executable(nlpservice_testclient
 )
 target_link_libraries(nlpservice_testclient thrift-0.9.1)
 
-file(COPY  ${PROJECT_SOURCE_DIR}/external DESTINATION ${PROJECT_BINARY_DIR})
+file(COPY external DESTINATION ${PROJECT_BINARY_DIR})

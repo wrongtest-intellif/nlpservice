@@ -16,6 +16,8 @@ class NlpServiceIf {
  public:
   virtual ~NlpServiceIf() {}
   virtual void wordcut_ictclas(std::string& _return, const IctclasWork& work) = 0;
+  virtual void fan2jian_opencc(std::string& _return, const std::string& sentence) = 0;
+  virtual void jian2fan_opencc(std::string& _return, const std::string& sentence) = 0;
 };
 
 class NlpServiceIfFactory {
@@ -46,6 +48,12 @@ class NlpServiceNull : virtual public NlpServiceIf {
  public:
   virtual ~NlpServiceNull() {}
   void wordcut_ictclas(std::string& /* _return */, const IctclasWork& /* work */) {
+    return;
+  }
+  void fan2jian_opencc(std::string& /* _return */, const std::string& /* sentence */) {
+    return;
+  }
+  void jian2fan_opencc(std::string& /* _return */, const std::string& /* sentence */) {
     return;
   }
 };
@@ -158,6 +166,222 @@ class NlpService_wordcut_ictclas_presult {
 
 };
 
+typedef struct _NlpService_fan2jian_opencc_args__isset {
+  _NlpService_fan2jian_opencc_args__isset() : sentence(false) {}
+  bool sentence;
+} _NlpService_fan2jian_opencc_args__isset;
+
+class NlpService_fan2jian_opencc_args {
+ public:
+
+  NlpService_fan2jian_opencc_args() : sentence() {
+  }
+
+  virtual ~NlpService_fan2jian_opencc_args() throw() {}
+
+  std::string sentence;
+
+  _NlpService_fan2jian_opencc_args__isset __isset;
+
+  void __set_sentence(const std::string& val) {
+    sentence = val;
+  }
+
+  bool operator == (const NlpService_fan2jian_opencc_args & rhs) const
+  {
+    if (!(sentence == rhs.sentence))
+      return false;
+    return true;
+  }
+  bool operator != (const NlpService_fan2jian_opencc_args &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const NlpService_fan2jian_opencc_args & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+
+class NlpService_fan2jian_opencc_pargs {
+ public:
+
+
+  virtual ~NlpService_fan2jian_opencc_pargs() throw() {}
+
+  const std::string* sentence;
+
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _NlpService_fan2jian_opencc_result__isset {
+  _NlpService_fan2jian_opencc_result__isset() : success(false) {}
+  bool success;
+} _NlpService_fan2jian_opencc_result__isset;
+
+class NlpService_fan2jian_opencc_result {
+ public:
+
+  NlpService_fan2jian_opencc_result() : success() {
+  }
+
+  virtual ~NlpService_fan2jian_opencc_result() throw() {}
+
+  std::string success;
+
+  _NlpService_fan2jian_opencc_result__isset __isset;
+
+  void __set_success(const std::string& val) {
+    success = val;
+  }
+
+  bool operator == (const NlpService_fan2jian_opencc_result & rhs) const
+  {
+    if (!(success == rhs.success))
+      return false;
+    return true;
+  }
+  bool operator != (const NlpService_fan2jian_opencc_result &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const NlpService_fan2jian_opencc_result & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _NlpService_fan2jian_opencc_presult__isset {
+  _NlpService_fan2jian_opencc_presult__isset() : success(false) {}
+  bool success;
+} _NlpService_fan2jian_opencc_presult__isset;
+
+class NlpService_fan2jian_opencc_presult {
+ public:
+
+
+  virtual ~NlpService_fan2jian_opencc_presult() throw() {}
+
+  std::string* success;
+
+  _NlpService_fan2jian_opencc_presult__isset __isset;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+
+};
+
+typedef struct _NlpService_jian2fan_opencc_args__isset {
+  _NlpService_jian2fan_opencc_args__isset() : sentence(false) {}
+  bool sentence;
+} _NlpService_jian2fan_opencc_args__isset;
+
+class NlpService_jian2fan_opencc_args {
+ public:
+
+  NlpService_jian2fan_opencc_args() : sentence() {
+  }
+
+  virtual ~NlpService_jian2fan_opencc_args() throw() {}
+
+  std::string sentence;
+
+  _NlpService_jian2fan_opencc_args__isset __isset;
+
+  void __set_sentence(const std::string& val) {
+    sentence = val;
+  }
+
+  bool operator == (const NlpService_jian2fan_opencc_args & rhs) const
+  {
+    if (!(sentence == rhs.sentence))
+      return false;
+    return true;
+  }
+  bool operator != (const NlpService_jian2fan_opencc_args &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const NlpService_jian2fan_opencc_args & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+
+class NlpService_jian2fan_opencc_pargs {
+ public:
+
+
+  virtual ~NlpService_jian2fan_opencc_pargs() throw() {}
+
+  const std::string* sentence;
+
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _NlpService_jian2fan_opencc_result__isset {
+  _NlpService_jian2fan_opencc_result__isset() : success(false) {}
+  bool success;
+} _NlpService_jian2fan_opencc_result__isset;
+
+class NlpService_jian2fan_opencc_result {
+ public:
+
+  NlpService_jian2fan_opencc_result() : success() {
+  }
+
+  virtual ~NlpService_jian2fan_opencc_result() throw() {}
+
+  std::string success;
+
+  _NlpService_jian2fan_opencc_result__isset __isset;
+
+  void __set_success(const std::string& val) {
+    success = val;
+  }
+
+  bool operator == (const NlpService_jian2fan_opencc_result & rhs) const
+  {
+    if (!(success == rhs.success))
+      return false;
+    return true;
+  }
+  bool operator != (const NlpService_jian2fan_opencc_result &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const NlpService_jian2fan_opencc_result & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _NlpService_jian2fan_opencc_presult__isset {
+  _NlpService_jian2fan_opencc_presult__isset() : success(false) {}
+  bool success;
+} _NlpService_jian2fan_opencc_presult__isset;
+
+class NlpService_jian2fan_opencc_presult {
+ public:
+
+
+  virtual ~NlpService_jian2fan_opencc_presult() throw() {}
+
+  std::string* success;
+
+  _NlpService_jian2fan_opencc_presult__isset __isset;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+
+};
+
 class NlpServiceClient : virtual public NlpServiceIf {
  public:
   NlpServiceClient(boost::shared_ptr< ::apache::thrift::protocol::TProtocol> prot) :
@@ -181,6 +405,12 @@ class NlpServiceClient : virtual public NlpServiceIf {
   void wordcut_ictclas(std::string& _return, const IctclasWork& work);
   void send_wordcut_ictclas(const IctclasWork& work);
   void recv_wordcut_ictclas(std::string& _return);
+  void fan2jian_opencc(std::string& _return, const std::string& sentence);
+  void send_fan2jian_opencc(const std::string& sentence);
+  void recv_fan2jian_opencc(std::string& _return);
+  void jian2fan_opencc(std::string& _return, const std::string& sentence);
+  void send_jian2fan_opencc(const std::string& sentence);
+  void recv_jian2fan_opencc(std::string& _return);
  protected:
   boost::shared_ptr< ::apache::thrift::protocol::TProtocol> piprot_;
   boost::shared_ptr< ::apache::thrift::protocol::TProtocol> poprot_;
@@ -197,10 +427,14 @@ class NlpServiceProcessor : public ::apache::thrift::TDispatchProcessor {
   typedef std::map<std::string, ProcessFunction> ProcessMap;
   ProcessMap processMap_;
   void process_wordcut_ictclas(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
+  void process_fan2jian_opencc(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
+  void process_jian2fan_opencc(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
  public:
   NlpServiceProcessor(boost::shared_ptr<NlpServiceIf> iface) :
     iface_(iface) {
     processMap_["wordcut_ictclas"] = &NlpServiceProcessor::process_wordcut_ictclas;
+    processMap_["fan2jian_opencc"] = &NlpServiceProcessor::process_fan2jian_opencc;
+    processMap_["jian2fan_opencc"] = &NlpServiceProcessor::process_jian2fan_opencc;
   }
 
   virtual ~NlpServiceProcessor() {}
@@ -236,6 +470,26 @@ class NlpServiceMultiface : virtual public NlpServiceIf {
       ifaces_[i]->wordcut_ictclas(_return, work);
     }
     ifaces_[i]->wordcut_ictclas(_return, work);
+    return;
+  }
+
+  void fan2jian_opencc(std::string& _return, const std::string& sentence) {
+    size_t sz = ifaces_.size();
+    size_t i = 0;
+    for (; i < (sz - 1); ++i) {
+      ifaces_[i]->fan2jian_opencc(_return, sentence);
+    }
+    ifaces_[i]->fan2jian_opencc(_return, sentence);
+    return;
+  }
+
+  void jian2fan_opencc(std::string& _return, const std::string& sentence) {
+    size_t sz = ifaces_.size();
+    size_t i = 0;
+    for (; i < (sz - 1); ++i) {
+      ifaces_[i]->jian2fan_opencc(_return, sentence);
+    }
+    ifaces_[i]->jian2fan_opencc(_return, sentence);
     return;
   }
 
