@@ -1,14 +1,15 @@
 #ifndef _WORDCUT_ICTCLAS_H_
 #define _WORDCUT_ICTCLAS_H_
 
-#include "../external/ictclas/include/NLPIR.h"
+#include <string>
+#include "../../external/ictclas/include/NLPIR.h"
 
 namespace wordcut 
 {
 	
 class WordCutIctclas {
 public:
-	WordCutIctclas(const char* dataPath) 
+	WordCutIctclas(const char* dataPath)
 		:initialed(false) 
 	{
 		if(NLPIR_Init(dataPath, UTF8_CODE))
@@ -21,12 +22,12 @@ public:
 			NLPIR_Exit();
 	}
 	
-	const char* cut(const char*sentence)
+	void cut(std::string& result, const std::string& sentence)
 	{
 		if (!initialed)
-			return NULL;
-		const char* result = NLPIR_ParagraphProcess(sentence);
-		return result;
+			return;
+		const char* buf = NLPIR_ParagraphProcess(sentence.c_str());
+		result = buf;
 	}
 	
 	void setpos(int pos)

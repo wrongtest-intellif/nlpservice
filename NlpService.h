@@ -13,7 +13,8 @@
 #include <string>
 #include <iostream>
 
-#include "wordcut/WordCutIctclas.h"
+#include "modules/opencc/OpenCC.h"
+#include "modules/wordcut/WordCutIctclas.h"
 #include "thrift/gen-cpp/NlpService.h"
 #include "thrift/gen-cpp/nlpservice_types.h"
 
@@ -31,10 +32,15 @@ public:
 	NlpService();
 
 	void wordcut_ictclas(std::string& result, const IctclasWork& work);
-	
+    
+    void fan2jian_opencc(std::string& result, const std::string& sentence);
+
+    void jian2fan_opencc(std::string& result, const std::string& sentence);
+    
 private:
 	int posMapIctclas;
 	wordcut::WordCutIctclas wordCutIctclas;
+    opencc::OpenCC openCC;
 };
 
 }

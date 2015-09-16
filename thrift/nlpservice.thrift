@@ -22,4 +22,7 @@ service NlpService {
 
    string wordcut_ictclas(1:IctclasWork work)
 
+   string fan2jian_opencc(1:string sentence)
+   
+   string jian2fan_opencc(1:string sentence)
 }

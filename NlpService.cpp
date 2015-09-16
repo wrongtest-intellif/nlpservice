@@ -23,7 +23,8 @@ namespace nlpservice
 
 NlpService::NlpService()
 	: posMapIctclas(0),
-	 wordCutIctclas("external/ictclas")
+	 wordCutIctclas("external/ictclas"),
+	 openCC()
 {
 	wordCutIctclas.setpos(posMapIctclas);
 }
@@ -38,7 +39,7 @@ void NlpService::wordcut_ictclas(std::string& result, const IctclasWork& work)
 			break;
 		case PosMap::ICT2:
 			curPosMap = ICT_POS_MAP_FIRST;
-			break;ICT_POS_MAP_SECOND;
+			break;
 		case PosMap::PKU1:
 			curPosMap = PKU_POS_MAP_FIRST;
 			break;
@@ -52,8 +53,19 @@ void NlpService::wordcut_ictclas(std::string& result, const IctclasWork& work)
 		wordCutIctclas.setpos(curPosMap);
 	}
 		
-	result = wordCutIctclas.cut(work.sentence.c_str());
+	wordCutIctclas.cut(result, work.sentence);
 	return;
 }
+
+void NlpService::fan2jian_opencc(std::string& result, const std::string& sentence)
+{
+	openCC.fan2jian(result, sentence);
+}
+
+void NlpService::jian2fan_opencc(std::string& result, const std::string& sentence)
+{
+    openCC.jian2fan(result, sentence);
+}
+
 
 }

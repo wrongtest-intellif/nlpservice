@@ -27,6 +27,16 @@ class NlpServiceHandler : virtual public NlpServiceIf {
     printf("wordcut_ictclas\n");
   }
 
+  void fan2jian_opencc(std::string& _return, const std::string& sentence) {
+    // Your implementation goes here
+    printf("fan2jian_opencc\n");
+  }
+
+  void jian2fan_opencc(std::string& _return, const std::string& sentence) {
+    // Your implementation goes here
+    printf("jian2fan_opencc\n");
+  }
+
 };
 
 int main(int argc, char **argv) {

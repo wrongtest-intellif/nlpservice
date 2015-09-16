@@ -25,6 +25,7 @@ int main() {
 	work.posmap = nlpservice::PosMap::ICT1;
 	work.sentence = "linux下有很多工具可以制作启动盘";
 	client.wordcut_ictclas(result, work);
+    client.fan2jian_opencc(result, work.sentence);
 	std::cout << result << std::endl;
 
   } catch (TException& tx) {
