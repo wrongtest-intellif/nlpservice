@@ -23,6 +23,6 @@ add_executable(nlpservice_testclient
 	thrift/gen-cpp/nlpservice_types.cpp
 	thrift/gen-cpp/nlpservice_constants.cpp
 )
-target_link_libraries(nlpservice_testclient thrift-0.9.1)
+target_link_libraries(nlpservice_testclient thrift)
 
 file(COPY external DESTINATION ${PROJECT_BINARY_DIR})
